@@ -46,7 +46,6 @@ public class TcpClient {
                         socketChannel.pipeline()
                                 .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, Delimiters.lineDelimiter()[0]));
                         socketChannel.pipeline().addLast(new StringDecoder());
-                        socketChannel.pipeline().addLast(new IdleStateHandler(60, 45, 20, TimeUnit.SECONDS));
                         socketChannel.pipeline().addLast(new SimpleClientHandler());
                         socketChannel.pipeline().addLast(new StringEncoder());
                     }

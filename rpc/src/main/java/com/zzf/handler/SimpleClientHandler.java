@@ -27,17 +27,5 @@ public class SimpleClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if (evt instanceof IdleStateEvent) {
-            IdleStateEvent idleState = (IdleStateEvent) evt;
-            if (idleState.state().equals(IdleState.READER_IDLE)) {
-                System.out.println("==读空闲==");
-                ctx.channel().close();
-            } else if (idleState.state().equals(IdleState.WRITER_IDLE)) {
-                System.out.println("==写空闲==");
-            } else if (idleState.state().equals(IdleState.ALL_IDLE)) {
-                System.out.println("==读写空闲==");
-                ctx.channel().writeAndFlush("ping\r\n");
-            }
-        }
     }
 }
