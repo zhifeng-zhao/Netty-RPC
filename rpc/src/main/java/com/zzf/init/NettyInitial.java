@@ -71,6 +71,7 @@ public class NettyInitial implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        // spring初始化完毕，启动服务器
         this.bind();
     }
 }
